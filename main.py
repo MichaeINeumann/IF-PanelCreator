@@ -1,5 +1,6 @@
 import sys
 from panel import *
+from readPanel import *
 from qtpy import QtWidgets, QtGui, QtCore
 from ui.mainwindow import Ui_MainWindow
 
@@ -9,10 +10,11 @@ app = QtWidgets.QApplication(sys.argv)
 class MainWindow(QtWidgets.QMainWindow):
     __currentTab = 0
     iFpanel = []  # List of all Pannels
+    p = {}  # dictionary of Panels
 
     def __init__(self, parent=None):
         super().__init__(parent)
-
+        self.fname = "FilePath"
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowTitle("I/F Panel Creator")
@@ -70,6 +72,21 @@ class MainWindow(QtWidgets.QMainWindow):
         if filename:
             self.fname = str(filename[0])
             print(self.fname)
+            self.p = readFile(self.fname)
+            # self.iFpanel[0].setText(self.p[1].panel["1A"][5], self.p[1].panel["1A"][6], self.p[1].panel["1A"][7], "1A")
+            for e in PanelDiscripition.elements:
+                self.iFpanel[0].setText(self.p[1].panel[e][5], self.p[1].panel[e][6], self.p[1].panel[e][7], e)
+                self.iFpanel[1].setText(self.p[2].panel[e][5], self.p[2].panel[e][6], self.p[2].panel[e][7], e)
+                self.iFpanel[2].setText(self.p[3].panel[e][5], self.p[3].panel[e][6], self.p[3].panel[e][7], e)
+                self.iFpanel[3].setText(self.p[4].panel[e][5], self.p[4].panel[e][6], self.p[4].panel[e][7], e)
+                self.iFpanel[4].setText(self.p[5].panel[e][5], self.p[5].panel[e][6], self.p[5].panel[e][7], e)
+
+            #print(self.p[1].panel["NAME"][0])
+            self.ui.tabWidget.setTabText(0, self.p[1].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(1, self.p[2].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(2, self.p[3].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(3, self.p[4].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(4, self.p[5].panel["NAME"][1])
 
     def connect(self):
         self.ui.tabWidget.tabBarClicked.connect(self.currentTab)
@@ -114,6 +131,9 @@ class testClass():
 window = MainWindow()
 iFpanel = Panel(window.ui.tab_1, window)
 iFpanel1 = Panel(window.ui.tab_2, window)
+iFpanel2 = Panel(window.ui.tab_3, window)
+iFpanel3 = Panel(window.ui.tab_4, window)
+iFpanel4 = Panel(window.ui.tab_5, window)
 
 # window.iFpanel.append(iFpanel) #add Oject for Connecting, window to current Panel
 # window.iFpanel.append(iFpanel1) #add Oject for Connecting, window to current Panel
@@ -124,8 +144,8 @@ iFpanel1 = Panel(window.ui.tab_2, window)
 # test1.setText("tabulator 1")
 # test2.setText("tabulator 2")
 
-iFpanel.setText("Tab1", "Tab1", "Tab1", "1A")
-iFpanel1.setText("Tab2", "Tab2", "Tab22", "1A")
+#iFpanel.setText("Tab1", "Tab1", "Tab1", "1A")
+#iFpanel1.setText("Tab2", "Tab2", "Tab22", "1A")
 
 # iFpanel.setText(p[1].panel["1A"][5], p[1].panel["1A"][6], p[1].panel["1A"][7], "1A")
 
@@ -135,6 +155,18 @@ iFpanel1.setText("Tab2", "Tab2", "Tab22", "1A")
 
 # window.ui.lbl_type1A.setPixmap(QtGui.QPixmap("UI/untitled/pic/Circle.png"))
 # window.ui.lbl_type1A.setStyleSheet("QLabel { background-color : red;}")
+
+
+# Panelx ausgeben
+# for element in elements:
+#    print(p[1].panel[element])
+
+
+
+# print(p[10].panel["IFPANEL"])
+#print(p[1].panel["2B"][5])
+#print(p[1].panel["2B"][6])
+#print(p[1].panel["2B"][7])
 
 
 window.show()
