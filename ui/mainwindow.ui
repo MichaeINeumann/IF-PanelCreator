@@ -158,6 +158,11 @@
       <widget class="QComboBox" name="cbARrange">
        <item>
         <property name="text">
+         <string> select ARrange</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>1A</string>
         </property>
        </item>
@@ -194,6 +199,126 @@
        <item>
         <property name="text">
          <string>1H</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2A</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2B</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2D</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2E</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2H</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3A</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3B</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3D</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3E</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3H</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4A</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4B</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4D</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4E</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4G</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4H</string>
         </property>
        </item>
       </widget>
