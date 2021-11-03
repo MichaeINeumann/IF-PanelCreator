@@ -97,35 +97,8 @@ class MainWindow(QtWidgets.QMainWindow):
         # self.ui.btn1.clicked.connect(self.on_button_click)
         # self.ui.btnSave.clicked.connect(self.on_button_clickSave)
 
-    def setUpPanel(self, lbl_type, up, mid, dw, x, y):
-        lbl_type.setPixmap(QtGui.QPixmap("UI/untitled/pic/Circle.png"))
-        lbl_type.setStyleSheet("QLabel { background-color : blue;}")
-        lbl_type.setGeometry(x, y, 100, 100)
-
-        up.setGeometry(QtCore.QRect(0 + x, 1 + y, 100, 10))
-        up.setText("test up")
-        up.setAlignment(QtCore.Qt.AlignCenter)
-
-        mid.setGeometry(QtCore.QRect(0 + x, 10 + y, 100, 10))
-        mid.setText("test middle")
-        mid.setAlignment(QtCore.Qt.AlignCenter)
-
-        dw.setGeometry(QtCore.QRect(0 + x, 20 + y, 100, 10))
-        dw.setText("test down")
-        dw.setAlignment(QtCore.Qt.AlignCenter)
 
 
-class testClass():
-    def __init__(self, dest):
-        self.dest = dest
-        self.lbl_name4Gdw = QtWidgets.QLabel(dest)
-
-        self.setText("init")
-
-    def setText(self, txt):
-        self.lbl_name4Gdw.setGeometry(QtCore.QRect(100, 10, 100, 10))
-        self.lbl_name4Gdw.setText(txt)
-        self.lbl_name4Gdw.setAlignment(QtCore.Qt.AlignCenter)
 
 
 window = MainWindow()
@@ -134,6 +107,11 @@ iFpanel1 = Panel(window.ui.tab_2, window)
 iFpanel2 = Panel(window.ui.tab_3, window)
 iFpanel3 = Panel(window.ui.tab_4, window)
 iFpanel4 = Panel(window.ui.tab_5, window)
+iFpanel5 = Panel(window.ui.tab_6, window)
+iFpanel6 = Panel(window.ui.tab_7, window)
+iFpanel7 = Panel(window.ui.tab_8, window)
+iFpanel8 = Panel(window.ui.tab_9, window)
+iFpanel9 = Panel(window.ui.tab_10, window)
 
 # window.iFpanel.append(iFpanel) #add Oject for Connecting, window to current Panel
 # window.iFpanel.append(iFpanel1) #add Oject for Connecting, window to current Panel
