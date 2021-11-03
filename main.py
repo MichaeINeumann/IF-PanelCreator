@@ -75,11 +75,13 @@ class MainWindow(QtWidgets.QMainWindow):
             self.p = readFile(self.fname)
             # self.iFpanel[0].setText(self.p[1].panel["1A"][5], self.p[1].panel["1A"][6], self.p[1].panel["1A"][7], "1A")
             for e in PanelDiscripition.elements:
-                self.iFpanel[0].setText(self.p[1].panel[e][5], self.p[1].panel[e][6], self.p[1].panel[e][7], e)
-                self.iFpanel[1].setText(self.p[2].panel[e][5], self.p[2].panel[e][6], self.p[2].panel[e][7], e)
-                self.iFpanel[2].setText(self.p[3].panel[e][5], self.p[3].panel[e][6], self.p[3].panel[e][7], e)
-                self.iFpanel[3].setText(self.p[4].panel[e][5], self.p[4].panel[e][6], self.p[4].panel[e][7], e)
-                self.iFpanel[4].setText(self.p[5].panel[e][5], self.p[5].panel[e][6], self.p[5].panel[e][7], e)
+                for i in range(9):
+                    if self.p[i+1].panel[e][1] == "1": #VALID DATA
+                        self.iFpanel[i].setText(self.p[i+1].panel[e][5], self.p[i+1].panel[e][6], self.p[i+1].panel[e][7], e)
+                        self.iFpanel[i].setPixmap(PanelDiscripition.panelType[self.p[i+1].panel[e][2]], e)
+                        self.iFpanel[i].setColour(PanelDiscripition.PanelColor[self.p[i+1].panel[e][3]], e)
+                        self.iFpanel[i].setTextColour(PanelDiscripition.TextColor[self.p[i + 1].panel[e][4]], e)
+
 
             #print(self.p[1].panel["NAME"][0])
             self.ui.tabWidget.setTabText(0, self.p[1].panel["NAME"][1])
@@ -87,6 +89,11 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.tabWidget.setTabText(2, self.p[3].panel["NAME"][1])
             self.ui.tabWidget.setTabText(3, self.p[4].panel["NAME"][1])
             self.ui.tabWidget.setTabText(4, self.p[5].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(5, self.p[6].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(6, self.p[7].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(7, self.p[8].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(8, self.p[9].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(9, self.p[10].panel["NAME"][1])
 
     def connect(self):
         self.ui.tabWidget.tabBarClicked.connect(self.currentTab)

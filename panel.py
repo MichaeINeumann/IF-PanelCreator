@@ -174,6 +174,16 @@ class Panel:
                 self.lbl_type[e].setStyleSheet(style)
                 break
 
+    def setTextColour(self, style: str, dest: str):
+        # SET TEXT Colour FROM FILE
+        # style = QLabel { font: bold 14px; color: Black;}"
+        for e in self.elements:
+            if dest == e:
+                self.lbl_nameUp[e].setStyleSheet(style)
+                self.lbl_nameMiddle[e].setStyleSheet(style)
+                self.lbl_nameDown[e].setStyleSheet(style)
+                break
+
     def changeName1(self):
         # SET TEXT 1 ON PANEL FROM UI
         for e in self.elements:

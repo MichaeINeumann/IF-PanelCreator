@@ -36,6 +36,68 @@ class PanelDiscripition:
         "4G",
         "4H"
     ]
+
+    panelType = {
+        "0": "ui/pic/Circle.png",
+        "1": "ui/pic/Circle.png",
+        "2": "ui/pic/Circle.png",
+        "3": "ui/pic/Square.png",
+        "4": "ui/pic/Square.png",
+        "5": "ui/pic/Square.png",
+        "6": "ui/pic/Square.png",
+        "7": "ui/pic/Square.png",
+        "8": "ui/pic/Square.png",
+        "9": "ui/pic/Switch.png",
+        "10": "ui/pic/Switch.png",
+        "11": "ui/pic/Switch.png",
+        "12": "ui/pic/Switch.png",
+        "16": "ui/pic/Counter3dw.png",
+        "17": "ui/pic/Counter6dw.png",
+        "18": "ui/pic/Counter3dg.png",
+        "19": "ui/pic/Counter6dg.png"
+    }
+
+    PanelColor = {
+        "0": "QLabel { background-color : Black;}",
+        "1": "QLabel { background-color : Blue;}",
+        "2": "QLabel { background-color : Green;}",
+        "3": "QLabel { background-color : LightSkyBlue ;}",
+        "4": "QLabel { background-color : Red;}",
+        "5": "QLabel { background-color : Purple;}",
+        "6": "QLabel { background-color : Yellow;}",
+        "7": "QLabel { background-color : White;}",
+        "8": "QLabel { background-color : LightGray;}",
+        "9": "QLabel { background-color : DarkBlue;}",
+        "10": "QLabel { background-color : DarkGreen;}",
+        "11": "QLabel { background-color : DeepSkyBlue ;}",
+        "12": "QLabel { background-color : DarkRed;}",
+        "13": "QLabel { background-color : DarkPurple;}",
+        "14": "QLabel { background-color : DarkYellow;}",
+        "15": "QLabel { background-color : DarkGray;}",
+        "16": "QLabel { background-color : Orange;}"
+    }
+
+    TextColor = {
+        "0": "QLabel { font: bold 14px; color: Black;}",
+        "1": "QLabel { font: bold 14px; color: Blue;}",
+        "2": "QLabel { font: bold 14px; color: Green;}",
+        "3": "QLabel { font: bold 14px; color: LightSkyBlue ;}",
+        "4": "QLabel { font: bold 14px; color: Red;}",
+        "5": "QLabel { font: bold 14px; color: Purple;}",
+        "6": "QLabel { font: bold 14px; color: Yellow;}",
+        "7": "QLabel { font: bold 14px; color: White;}",
+        "8": "QLabel { font: bold 14px; color: LightGray;}",
+        "9": "QLabel { font: bold 14px; color: DarkBlue;}",
+        "10": "QLabel { font: bold 14px; color: DarkGreen;}",
+        "11": "QLabel { font: bold 14px; color: DeepSkyBlue ;}",
+        "12": "QLabel { font: bold 14px; color: DarkRed;}",
+        "13": "QLabel { font: bold 14px; color: DarkPurple;}",
+        "14": "QLabel { font: bold 14px; color: DarkYellow;}",
+        "15": "QLabel { font: bold 14px; color: DarkGray;}",
+        "16": "QLabel { font: bold 14px; color: Orange;}"
+    }
+
+
     color = {
         "Black": "0",
         "Blue": "1",
@@ -76,7 +138,7 @@ class PanelDiscripition:
         "Counter (3-digit display)": "16",
         "Counter (6-digit display)": "17",
         "Preset counter (3-digit display)": "18",
-        "Preset counter (6-digit display)": "19",
+        "Preset counter (6-digit display)": "19"
     }
 
     input_Type = {
@@ -122,7 +184,7 @@ class PanelDiscripition:
             "4E": "6",
             "4F": "7",
             "4G": "8",
-            "4H": "9",
+            "4H": "9"
         }
 
 
