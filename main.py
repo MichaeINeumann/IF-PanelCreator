@@ -39,11 +39,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.name3.textChanged.disconnect()  # this disconnect all
         self.ui.name3.textChanged.connect(self.iFpanel[self.__currentTab].changeName3)
 
-        self.ui.cbARrange.currentTextChanged.connect(self.iFpanel[self.__currentTab].currentName)
+        self.ui.cbARrange.currentTextChanged.connect(self.iFpanel[self.__currentTab].currentRange)
         self.ui.cbARrange.currentTextChanged.disconnect()  # this disconnect all
-        self.ui.cbARrange.currentTextChanged.connect(self.iFpanel[self.__currentTab].currentName)
+        self.ui.cbARrange.currentTextChanged.connect(self.iFpanel[self.__currentTab].currentRange)
 
-        self.iFpanel[self.__currentTab].currentName()  # update name1,2,3
+        self.iFpanel[self.__currentTab].currentRange()  # update name1,2,3
 
     def changeGroupName(self):
         self.ui.tabWidget.setTabText(self.__currentTab, self.ui.groupName.toPlainText())
