@@ -27,23 +27,39 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.groupName.setPlainText(tabTxt)
 
         # RECONNECT WHEN TAB CHANGED
-        self.ui.name1.textChanged.connect(self.iFpanel[self.__currentTab].changeName1)
+        self.ui.name1.textChanged.connect(self.changeName1)
         self.ui.name1.textChanged.disconnect()  # this disconnect all
-        self.ui.name1.textChanged.connect(self.iFpanel[self.__currentTab].changeName1)
+        self.ui.name1.textChanged.connect(self.changeName1)
 
-        self.ui.name2.textChanged.connect(self.iFpanel[self.__currentTab].changeName2)
+        self.ui.name2.textChanged.connect(self.changeName2)
         self.ui.name2.textChanged.disconnect()  # this disconnect all
-        self.ui.name2.textChanged.connect(self.iFpanel[self.__currentTab].changeName2)
+        self.ui.name2.textChanged.connect(self.changeName2)
 
-        self.ui.name3.textChanged.connect(self.iFpanel[self.__currentTab].changeName3)
+        self.ui.name3.textChanged.connect(self.changeName3)
         self.ui.name3.textChanged.disconnect()  # this disconnect all
-        self.ui.name3.textChanged.connect(self.iFpanel[self.__currentTab].changeName3)
+        self.ui.name3.textChanged.connect(self.changeName3)
 
-        self.ui.cbARrange.currentTextChanged.connect(self.iFpanel[self.__currentTab].currentRange)
+        self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
         self.ui.cbARrange.currentTextChanged.disconnect()  # this disconnect all
-        self.ui.cbARrange.currentTextChanged.connect(self.iFpanel[self.__currentTab].currentRange)
+        self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
 
-        self.iFpanel[self.__currentTab].currentRange()  # update name1,2,3
+        self.iFpanel[self.__currentTab].currentRange(self.__currentTab)  # update name1,2,3
+
+    def changeName1(self):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeName1(self.__currentTab)
+
+    def changeName2(self):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeName2(self.__currentTab)
+
+    def changeName3(self):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeName3(self.__currentTab)
+
+    def currentRange(self, event):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].currentRange(self.__currentTab)
 
     def changeGroupName(self):
         self.ui.tabWidget.setTabText(self.__currentTab, self.ui.groupName.toPlainText())

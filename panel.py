@@ -3,6 +3,8 @@ from qtpy import QtWidgets, QtCore, QtGui
 
 # https://stackoverflow.com/questions/45575626/make-qlabel-clickable
 # https://wiki.python.org/moin/PyQt/Making%20non-clickable%20widgets%20clickable
+import panel
+
 
 class Panel:
     def __init__(self, dest, window):
@@ -118,10 +120,15 @@ class Panel:
 
         for e in self.elements:
             self.lbl_type[e] = QtWidgets.QLabel(self.dest)
-            self.lbl_type[e].mouseReleaseEvent = self.typeEvent[e]
+            self.lbl_type[e].mousePressEvent = self.typeEvent[e]
+
             self.lbl_nameUp[e] = QtWidgets.QLabel(self.dest)
             self.lbl_nameMiddle[e] = QtWidgets.QLabel(self.dest)
             self.lbl_nameDown[e] = QtWidgets.QLabel(self.dest)
+
+            self.lbl_nameUp[e].mousePressEvent = self.typeEvent[e]
+            self.lbl_nameMiddle[e].mousePressEvent = self.typeEvent[e]
+            self.lbl_nameDown[e].mousePressEvent = self.typeEvent[e]
 
             self.setUpPanel(self.lbl_type[e], self.lbl_nameUp[e], self.lbl_nameMiddle[e], self.lbl_nameDown[e],
                             self.lbl_grid[e])
@@ -184,35 +191,68 @@ class Panel:
                 self.lbl_nameDown[e].setStyleSheet(style)
                 break
 
-    def changeName1(self):
-        # SET TEXT 1 ON PANEL FROM UI
+    def changeName1(self, panel):
+        # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.lbl_nameUp[e].setText(self.window.ui.name1.toPlainText())
-                break
+                if self.window.p:
+                    if len(self.window.ui.name1.toPlainText().strip()) < 11:  # only 11 characters and 1 line
+                        self.window.p[panel+1].panel[e][5] = self.window.ui.name1.toPlainText()
+                        self.lbl_nameUp[e].setText(self.window.p[panel+1].panel[e][5])
+                        break
+                else: #nothing file load - no p
+                    if len(self.window.ui.name1.toPlainText().strip()) < 11:  # only 11 characters and 1 line
+                        if self.window.ui.cbARrange.currentText() == e:
+                            self.lbl_nameUp[e].setText(self.window.ui.name1.toPlainText())
+                            #2do write in p
+                            break
 
-    def changeName2(self):
-        # SET TEXT 2 ON PANEL FROM UI
+    def changeName2(self, panel):
+        # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.lbl_nameMiddle[e].setText(self.window.ui.name2.toPlainText())
-                break
+                if self.window.p:
+                    if len(self.window.ui.name2.toPlainText().strip()) < 11:  # only 11 characters and 1 line
+                        self.window.p[panel+1].panel[e][6] = self.window.ui.name2.toPlainText()
+                        self.lbl_nameMiddle[e].setText(self.window.p[panel+1].panel[e][6])
+                        break
+                else: #nothing file load - no p
+                    if len(self.window.ui.name2.toPlainText().strip()) < 11:  # only 11 characters and 1 line
+                        if self.window.ui.cbARrange.currentText() == e:
+                            self.lbl_nameMiddle[e].setText(self.window.ui.name2.toPlainText())
+                            #2do write in p
+                            break
 
-    def changeName3(self):
-        # SET TEXT 3 ON PANEL FROM UI
+    def changeName3(self, panel):
+        # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.lbl_nameDown[e].setText(self.window.ui.name3.toPlainText())
-                break
+                if self.window.p:
+                    if len(self.window.ui.name3.toPlainText().strip()) < 11:  # only 11 characters and 1 line
+                        self.window.p[panel+1].panel[e][7] = self.window.ui.name3.toPlainText()
+                        self.lbl_nameDown[e].setText(self.window.p[panel+1].panel[e][7])
+                        break
+                else: #nothing file load - no p
+                    if len(self.window.ui.name3.toPlainText().strip()) < 11:  # only 11 characters and 1 line
+                        if self.window.ui.cbARrange.currentText() == e:
+                            self.lbl_nameDown[e].setText(self.window.ui.name3.toPlainText())
+                            #2do write in p
+                            break
 
-    def currentRange(self):
-        # SET TEXT 123 ON UI FROM PANEL
+    def currentRange(self, panel):
+        #cbARrange.currentTextChanged - 1A -> 1B
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.window.ui.name1.setPlainText(self.lbl_nameUp[e].text())
-                self.window.ui.name2.setPlainText(self.lbl_nameMiddle[e].text())
-                self.window.ui.name3.setPlainText(self.lbl_nameDown[e].text())
-                break
+                if self.window.p:
+                    self.window.ui.name1.setPlainText(self.window.p[panel + 1].panel[e][5])
+                    self.window.ui.name2.setPlainText(self.window.p[panel + 1].panel[e][6])
+                    self.window.ui.name3.setPlainText(self.window.p[panel + 1].panel[e][7])
+                    break
+                else:
+                    self.window.ui.name1.setPlainText(self.lbl_nameUp[e].text())
+                    self.window.ui.name2.setPlainText(self.lbl_nameMiddle[e].text())
+                    self.window.ui.name3.setPlainText(self.lbl_nameDown[e].text())
+                    break
 
     def typeEvent1A(self, event):
         self.window.ui.cbARrange.setCurrentIndex(1)
