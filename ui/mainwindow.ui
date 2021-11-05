@@ -19,6 +19,16 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>pic/Icon.png</normaloff>pic/Icon.png</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>16</width>
+    <height>16</height>
+   </size>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btn1">
     <property name="geometry">
@@ -124,41 +134,109 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>850</x>
+      <x>810</x>
       <y>30</y>
-      <width>551</width>
+      <width>701</width>
       <height>391</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="6" column="0">
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>TEXT COLOR</string>
-       </property>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="cbColor">
+       <item>
+        <property name="text">
+         <string>Black</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Green</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sky blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Red</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Purple</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Yellow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>White</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Light gray</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark green</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark sky blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark red</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark purple</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark yellow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark gray</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Orange</string>
+        </property>
+       </item>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>INTER LOCK ENABLE</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QComboBox" name="cbSecurity"/>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>SECURITY</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>ARRANGE</string>
+     <item row="5" column="1">
+      <widget class="QPlainTextEdit" name="name1">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -176,8 +254,233 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="cbType"/>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>SECURITY</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QPlainTextEdit" name="name3">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="cbSecurity">
+       <item>
+        <property name="text">
+         <string>Operation mode</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Editing mode</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Management
+mode</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QComboBox" name="cbInput">
+       <item>
+        <property name="text">
+         <string>None</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Signal</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B-variable</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>I-variable</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Register</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>ARRANGE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>PANEL NAME lang.1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QComboBox" name="cbInterlock">
+       <item>
+        <property name="text">
+         <string>Prohibited</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Permitted</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QPlainTextEdit" name="name2">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>SETUP</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="cbSetup">
+       <item>
+        <property name="text">
+         <string>Invalid</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Valid</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>INPUT (DISP)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>INTER LOCK ENABLE</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="cbTextColor">
+       <item>
+        <property name="text">
+         <string>Black</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Green</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sky blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Red</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Purple</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Yellow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>White</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Light gray</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark green</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark sky blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark red</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark purple</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark yellow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark gray</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Orange</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item row="1" column="1">
       <widget class="QComboBox" name="cbARrange">
@@ -348,26 +651,6 @@
        </item>
       </widget>
      </item>
-     <item row="3" column="2">
-      <widget class="QComboBox" name="cbType1"/>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>INPUT (DISP)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QPlainTextEdit" name="name1">
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
@@ -375,57 +658,165 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_7">
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>PANEL NAME</string>
+        <string>TEXT COLOR</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>SETUP</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QComboBox" name="cbTextColor"/>
-     </item>
-     <item row="4" column="1">
-      <widget class="QComboBox" name="cbColor"/>
-     </item>
-     <item row="9" column="1">
-      <widget class="QComboBox" name="cbInput"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="cbSetup"/>
-     </item>
-     <item row="8" column="1">
-      <widget class="QComboBox" name="cbInterlock"/>
-     </item>
-     <item row="5" column="2">
-      <widget class="QPlainTextEdit" name="name2">
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="3">
-      <widget class="QPlainTextEdit" name="name3">
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="cbType">
+       <item>
+        <property name="text">
+         <string>Circle indication light (display only)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Circle indication light (push button)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Circle indication light (push-lock/push-release button)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Square indication light 1 (display only)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Square indication light 1 (push button)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Square indication light 1 (push-lock/push-release button)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Square indication light 2 (display only)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Square indication light 2 (push button)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Square indication light 2 (push-lock/push-release button)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Selector switch (left: ON)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Selector switch (right: ON)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Selector switch (2-point output)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Selector switch (panel operation)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Counter (3-digit display)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Counter (6-digit display)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Preset counter (3-digit display)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Preset counter (6-digit display)</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QPlainTextEdit" name="groupName">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPlainTextEdit" name="name1_2">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QPlainTextEdit" name="name2_2">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QPlainTextEdit" name="name3_2">
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>PANEL NAME lang.2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <widget class="QComboBox" name="cbInput_3">
+       <item>
+        <property name="text">
+         <string>OFF: A-contact</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ON: B-contact</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="10" column="2">
+      <widget class="QPlainTextEdit" name="number">
        <property name="maximumSize">
         <size>
          <width>200</width>
@@ -452,6 +843,7 @@
     </property>
     <addaction name="actionLoad"/>
     <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
    </widget>
    <addaction name="menuDatei"/>
   </widget>
@@ -464,6 +856,14 @@
   <action name="actionSave">
    <property name="text">
     <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as ...</string>
+   </property>
+   <property name="iconText">
+    <string>Save as</string>
    </property>
   </action>
  </widget>

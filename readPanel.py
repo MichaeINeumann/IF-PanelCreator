@@ -37,6 +37,43 @@ class PanelDiscripition:
         "4H"
     ]
 
+    elementsForWrite = [
+        "IFPANEL",
+        "NAME",
+        "1A",
+        "1B",
+        "1C",
+        "1D",
+        "1E",
+        "1F",
+        "1G",
+        "1H",
+        "2A",
+        "2B",
+        "2C",
+        "2D",
+        "2E",
+        "2F",
+        "2G",
+        "2H",
+        "3A",
+        "3B",
+        "3C",
+        "3D",
+        "3E",
+        "3F",
+        "3G",
+        "3H",
+        "4A",
+        "4B",
+        "4C",
+        "4D",
+        "4E",
+        "4F",
+        "4G",
+        "4H"
+    ]
+
     panelType = {
         "0": "ui/pic/Circle.png",
         "1": "ui/pic/Circle.png",
@@ -209,6 +246,18 @@ def readFile(path):
                 p[nP].panel[row[0]] = row
 
     return p
+
+def writeFile(path, p):
+    i = int(0)
+    #print(p[1].panel["1A"])
+
+
+    with open(path, 'w', encoding='utf-8-sig', newline='') as csvfile:
+        panelwriter = csv.writer(csvfile, delimiter=',', quotechar='"')
+        for i in range(15):
+            for e in PanelDiscripition.elementsForWrite:
+                panelwriter.writerow(p[i+1].panel[e])
+
 
 
 

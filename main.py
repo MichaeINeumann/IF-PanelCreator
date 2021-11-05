@@ -19,6 +19,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("I/F Panel Creator")
 
+        p = readFile("IFPANELempty.DAT")  # init with empty datas
+
         self.connect()
 
     def currentTab(self, tab):
@@ -43,6 +45,30 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbARrange.currentTextChanged.disconnect()  # this disconnect all
         self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
 
+        self.ui.cbColor.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbColor.currentIndexChanged.disconnect()
+        self.ui.cbColor.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbInterlock.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbInterlock.currentIndexChanged.disconnect()
+        self.ui.cbInterlock.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbSecurity.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbSecurity.currentIndexChanged.disconnect()
+        self.ui.cbSecurity.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbSetup.currentIndexChanged.disconnect()
+        self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbTextColor.currentIndexChanged.disconnect()
+        self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbType.currentIndexChanged.disconnect()
+        self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
+
         self.iFpanel[self.__currentTab].currentRange(self.__currentTab)  # update name1,2,3
 
     def changeName1(self):
@@ -60,6 +86,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def currentRange(self, event):
         #call Panel instance
         self.iFpanel[self.__currentTab].currentRange(self.__currentTab)
+
+    def changeCBoxes(self, event):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeCBoxes(self.__currentTab)
 
     def changeGroupName(self):
         self.ui.tabWidget.setTabText(self.__currentTab, self.ui.groupName.toPlainText())
@@ -111,11 +141,30 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.tabWidget.setTabText(8, self.p[9].panel["NAME"][1])
             self.ui.tabWidget.setTabText(9, self.p[10].panel["NAME"][1])
 
+    def savefile(self):
+        writeFile(self.fname, self.p)
+
+    def savefile_as(self):
+        eeg_cap_dir = QtCore.QDir.currentPath()
+        dialog = QtWidgets.QFileDialog(self)
+        dialog.setWindowTitle('Open EEG Position file')
+        dialog.setNameFilter('(*.DAT)')
+        dialog.setDirectory(eeg_cap_dir)
+        dialog.setFileMode(QtWidgets.QFileDialog.AnyFile)
+        filename = None
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:
+            filename = dialog.selectedFiles()
+        if filename:
+            self.fname = str(filename[0])
+            writeFile(self.fname, self.p)
+
     def connect(self):
         self.ui.tabWidget.tabBarClicked.connect(self.currentTab)
         self.ui.groupName.textChanged.connect(self.changeGroupName)
 
         self.ui.actionLoad.triggered.connect(self.getfile)
+        self.ui.actionSave.triggered.connect(self.savefile)
+        self.ui.actionSave_as.triggered.connect(self.savefile_as)
 
         # self.ui.btn1.clicked.connect(self.on_button_click)
         # self.ui.btnSave.clicked.connect(self.on_button_clickSave)
