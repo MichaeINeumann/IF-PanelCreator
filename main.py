@@ -19,7 +19,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.setWindowTitle("I/F Panel Creator")
 
-        p = readFile("IFPANELempty.DAT")  # init with empty datas
+        self.p = readFile("IFPANELempty.DAT")  # init with empty datas
 
         self.connect()
 
@@ -29,45 +29,13 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.groupName.setPlainText(tabTxt)
 
         # RECONNECT WHEN TAB CHANGED
-        self.ui.name1.textChanged.connect(self.changeName1)
-        self.ui.name1.textChanged.disconnect()  # this disconnect all
-        self.ui.name1.textChanged.connect(self.changeName1)
-
-        self.ui.name2.textChanged.connect(self.changeName2)
-        self.ui.name2.textChanged.disconnect()  # this disconnect all
-        self.ui.name2.textChanged.connect(self.changeName2)
-
-        self.ui.name3.textChanged.connect(self.changeName3)
-        self.ui.name3.textChanged.disconnect()  # this disconnect all
-        self.ui.name3.textChanged.connect(self.changeName3)
-
         self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
+        self.ui.cbLanguage.currentIndexChanged.connect(self.currentRange)
         self.ui.cbARrange.currentTextChanged.disconnect()  # this disconnect all
         self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
+        self.ui.cbLanguage.currentIndexChanged.connect(self.currentRange)
 
-        self.ui.cbColor.currentIndexChanged.connect(self.changeCBoxes)
-        self.ui.cbColor.currentIndexChanged.disconnect()
-        self.ui.cbColor.currentIndexChanged.connect(self.changeCBoxes)
 
-        self.ui.cbInterlock.currentIndexChanged.connect(self.changeCBoxes)
-        self.ui.cbInterlock.currentIndexChanged.disconnect()
-        self.ui.cbInterlock.currentIndexChanged.connect(self.changeCBoxes)
-
-        self.ui.cbSecurity.currentIndexChanged.connect(self.changeCBoxes)
-        self.ui.cbSecurity.currentIndexChanged.disconnect()
-        self.ui.cbSecurity.currentIndexChanged.connect(self.changeCBoxes)
-
-        self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
-        self.ui.cbSetup.currentIndexChanged.disconnect()
-        self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
-
-        self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
-        self.ui.cbTextColor.currentIndexChanged.disconnect()
-        self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
-
-        self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
-        self.ui.cbType.currentIndexChanged.disconnect()
-        self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
 
         self.iFpanel[self.__currentTab].currentRange(self.__currentTab)  # update name1,2,3
 
@@ -84,8 +52,58 @@ class MainWindow(QtWidgets.QMainWindow):
         self.iFpanel[self.__currentTab].changeName3(self.__currentTab)
 
     def currentRange(self, event):
+        #disconect while setting up cBoxes
+        self.ui.name1.textChanged.connect(self.changeName1)
+        self.ui.name1_2.textChanged.connect(self.changeName1)
+        self.ui.name1.textChanged.disconnect()  # this disconnect all
+        self.ui.name2.textChanged.connect(self.changeName2)
+        self.ui.name2_2.textChanged.connect(self.changeName2)
+        self.ui.name2.textChanged.disconnect()  # this disconnect all
+        self.ui.name3.textChanged.connect(self.changeName3)
+        self.ui.name3_2.textChanged.connect(self.changeName3)
+        self.ui.name3.textChanged.disconnect()  # this disconnect all
+        self.ui.cbColor.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbColor.currentIndexChanged.disconnect()
+        self.ui.cbInterlock.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbInterlock.currentIndexChanged.disconnect()
+        self.ui.cbSecurity.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbSecurity.currentIndexChanged.disconnect()
+        self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbSetup.currentIndexChanged.disconnect()
+        self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbTextColor.currentIndexChanged.disconnect()
+        self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbType.currentIndexChanged.disconnect()
+
+        #update all
+        for e in PanelDiscripition.elements:
+            for i in range(9):
+                if self.p[i + 1].panel[e][1] == "1":  # VALID DATA
+                    if (self.ui.cbLanguage.currentText() == "first Language"):
+                        self.iFpanel[i].setText(self.p[i + 1].panel[e][5], self.p[i + 1].panel[e][6],self.p[i + 1].panel[e][7], e)
+                    else:
+                        self.iFpanel[i].setText(self.p[i + 1].panel[e][19], self.p[i + 1].panel[e][20],self.p[i + 1].panel[e][21], e)
+
+                    self.iFpanel[i].setPixmap(PanelDiscripition.panelType[self.p[i + 1].panel[e][2]], e)
+                    self.iFpanel[i].setColour(PanelDiscripition.PanelColor[self.p[i + 1].panel[e][3]], e)
+                    self.iFpanel[i].setTextColour(PanelDiscripition.TextColor[self.p[i + 1].panel[e][4]], e)
+
         #call Panel instance
         self.iFpanel[self.__currentTab].currentRange(self.__currentTab)
+
+        #reconnect after set up Boxes
+        self.ui.name1.textChanged.connect(self.changeName1)
+        self.ui.name1_2.textChanged.connect(self.changeName1)
+        self.ui.name2.textChanged.connect(self.changeName2)
+        self.ui.name2_2.textChanged.connect(self.changeName2)
+        self.ui.name3.textChanged.connect(self.changeName3)
+        self.ui.name3_2.textChanged.connect(self.changeName3)
+        self.ui.cbColor.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbInterlock.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbSecurity.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
 
     def changeCBoxes(self, event):
         #call Panel instance

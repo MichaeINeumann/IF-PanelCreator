@@ -121,7 +121,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>810</x>
       <y>0</y>
       <width>101</width>
       <height>31</height>
@@ -734,6 +734,21 @@ mode</string>
        </item>
        <item>
         <property name="text">
+         <string>undef</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>undef</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>undef</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>Counter (3-digit display)</string>
         </property>
        </item>
@@ -823,6 +838,20 @@ mode</string>
          <height>25</height>
         </size>
        </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QComboBox" name="cbLanguage">
+       <item>
+        <property name="text">
+         <string>first Language</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>second Language</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>

@@ -1,9 +1,9 @@
 from qtpy import QtWidgets, QtCore, QtGui
-
+from readPanel import *
 
 # https://stackoverflow.com/questions/45575626/make-qlabel-clickable
 # https://wiki.python.org/moin/PyQt/Making%20non-clickable%20widgets%20clickable
-import panel
+
 
 
 class Panel:
@@ -194,65 +194,100 @@ class Panel:
     def changeName1(self, panel):
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
-            if self.window.ui.cbARrange.currentText() == e:
-                if self.window.p:
-                    if len(self.window.ui.name1.toPlainText().strip()) < 11:  # only 11 characters and 1 line
-                        self.window.p[panel+1].panel[e][5] = self.window.ui.name1.toPlainText()
-                        self.lbl_nameUp[e].setText(self.window.p[panel+1].panel[e][5])
-                        break
-                else: #nothing file load - no p
-                    if len(self.window.ui.name1.toPlainText().strip()) < 11:  # only 11 characters and 1 line
-                        if self.window.ui.cbARrange.currentText() == e:
-                            self.lbl_nameUp[e].setText(self.window.ui.name1.toPlainText())
-                            #2do write in p
-                            break
+            if self.window.ui.cbARrange.currentText() == e: #Data cames when event.select cbARrange, default select is not in the element list
+                if (len(self.window.ui.name1.toPlainText().strip()) < 11) and (self.window.ui.cbLanguage.currentText() == "first Language"):  # only 11 characters and 1 line
+                    #second name fields, display in Panel depending cbLanguage
+                    #saving ever both fields independent of cbLanguage
+                    #p has empty datas, when no file loaded
+                    self.window.p[panel+1].panel[e][5] = self.window.ui.name1.toPlainText()
+                    self.window.p[panel+1].panel[e][19] = self.window.ui.name1_2.toPlainText()
+                    self.lbl_nameUp[e].setText(self.window.p[panel+1].panel[e][5])
+                    break
+                elif (len(self.window.ui.name1_2.toPlainText().strip()) < 11) and (self.window.ui.cbLanguage.currentText() == "second Language"):
+                    #second name fields, display in Panel depending cbLanguage
+                    #saving ever both fields independent of cbLanguage
+                    #p has empty datas, when no file loaded
+                    self.window.p[panel+1].panel[e][5] = self.window.ui.name1.toPlainText()
+                    self.window.p[panel+1].panel[e][19] = self.window.ui.name1_2.toPlainText()
+                    self.lbl_nameUp[e].setText(self.window.p[panel+1].panel[e][19])
+                    break
 
     def changeName2(self, panel):
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
-            if self.window.ui.cbARrange.currentText() == e:
-                if self.window.p:
-                    if len(self.window.ui.name2.toPlainText().strip()) < 11:  # only 11 characters and 1 line
-                        self.window.p[panel+1].panel[e][6] = self.window.ui.name2.toPlainText()
-                        self.lbl_nameMiddle[e].setText(self.window.p[panel+1].panel[e][6])
-                        break
-                else: #nothing file load - no p
-                    if len(self.window.ui.name2.toPlainText().strip()) < 11:  # only 11 characters and 1 line
-                        if self.window.ui.cbARrange.currentText() == e:
-                            self.lbl_nameMiddle[e].setText(self.window.ui.name2.toPlainText())
-                            #2do write in p
-                            break
+            if self.window.ui.cbARrange.currentText() == e: #Data cames when event.select cbARrange, default select is not in the element list
+                if (len(self.window.ui.name2.toPlainText().strip()) < 11) and (self.window.ui.cbLanguage.currentText() == "first Language"):  # only 11 characters and 1 line
+                    #second name fields, display in Panel depending cbLanguage
+                    #saving ever both fields independent of cbLanguage
+                    #p has empty datas, when no file loaded
+                    self.window.p[panel+1].panel[e][6] = self.window.ui.name2.toPlainText()
+                    self.window.p[panel+1].panel[e][20] = self.window.ui.name2_2.toPlainText()
+                    self.lbl_nameMiddle[e].setText(self.window.p[panel+1].panel[e][6])
+                    break
+                elif (len(self.window.ui.name2_2.toPlainText().strip()) < 11) and (self.window.ui.cbLanguage.currentText() == "second Language"):
+                    #second name fields, display in Panel depending cbLanguage
+                    #saving ever both fields independent of cbLanguage
+                    #p has empty datas, when no file loaded
+                    self.window.p[panel+1].panel[e][6] = self.window.ui.name2.toPlainText()
+                    self.window.p[panel+1].panel[e][20] = self.window.ui.name2_2.toPlainText()
+                    self.lbl_nameMiddle[e].setText(self.window.p[panel+1].panel[e][20])
+                    break
 
     def changeName3(self, panel):
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
-            if self.window.ui.cbARrange.currentText() == e:
-                if self.window.p:
-                    if len(self.window.ui.name3.toPlainText().strip()) < 11:  # only 11 characters and 1 line
-                        self.window.p[panel+1].panel[e][7] = self.window.ui.name3.toPlainText()
-                        self.lbl_nameDown[e].setText(self.window.p[panel+1].panel[e][7])
-                        break
-                else: #nothing file load - no p
-                    if len(self.window.ui.name3.toPlainText().strip()) < 11:  # only 11 characters and 1 line
-                        if self.window.ui.cbARrange.currentText() == e:
-                            self.lbl_nameDown[e].setText(self.window.ui.name3.toPlainText())
-                            #2do write in p
-                            break
+            if self.window.ui.cbARrange.currentText() == e: #Data cames when event.select cbARrange, default select is not in the element list
+                if (len(self.window.ui.name3.toPlainText().strip()) < 11) and (self.window.ui.cbLanguage.currentText() == "first Language"):  # only 11 characters and 1 line
+                    #second name fields, display in Panel depending cbLanguage
+                    #saving ever both fields independent of cbLanguage
+                    #p has empty datas, when no file loaded
+                    self.window.p[panel+1].panel[e][7] = self.window.ui.name3.toPlainText()
+                    self.window.p[panel+1].panel[e][21] = self.window.ui.name3_2.toPlainText()
+                    self.lbl_nameDown[e].setText(self.window.p[panel+1].panel[e][7])
+                    break
+                elif (len(self.window.ui.name3_2.toPlainText().strip()) < 11) and (self.window.ui.cbLanguage.currentText() == "second Language"):
+                    #second name fields, display in Panel depending cbLanguage
+                    #saving ever both fields independent of cbLanguage
+                    #p has empty datas, when no file loaded
+                    self.window.p[panel+1].panel[e][7] = self.window.ui.name3.toPlainText()
+                    self.window.p[panel+1].panel[e][21] = self.window.ui.name3_2.toPlainText()
+                    self.lbl_nameDown[e].setText(self.window.p[panel+1].panel[e][21])
+                    break
+
+    def changeCBoxes(self, panel):
+        # write data from UI in PanelFile - Update lbl
+        for e in self.elements:
+            if self.window.ui.cbARrange.currentText() == e: #Data cames when event.select cbARrange, default select is not in the element list
+                #2do inputs
+                #break
+                self.window.p[panel + 1].panel[e][3] = self.window.ui.cbColor.currentIndex()
+                self.window.p[panel + 1].panel[e][9] = self.window.ui.cbInterlock.currentIndex()
+                self.window.p[panel + 1].panel[e][8] = self.window.ui.cbSecurity.currentIndex()
+                self.window.p[panel + 1].panel[e][1] = self.window.ui.cbSetup.currentIndex()
+                self.window.p[panel + 1].panel[e][4] = self.window.ui.cbTextColor.currentIndex()
+                self.window.p[panel + 1].panel[e][2] = self.window.ui.cbType.currentIndex()
+                #update Panel - only 3 relevance options
+                self.setPixmap(PanelDiscripition.panelType[str(self.window.p[panel + 1].panel[e][2])], e)
+                self.setColour(PanelDiscripition.PanelColor[str(self.window.p[panel + 1].panel[e][3])], e)
+                self.setTextColour(PanelDiscripition.TextColor[str(self.window.p[panel + 1].panel[e][4])], e)
+                break
 
     def currentRange(self, panel):
         #cbARrange.currentTextChanged - 1A -> 1B
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                if self.window.p:
                     self.window.ui.name1.setPlainText(self.window.p[panel + 1].panel[e][5])
                     self.window.ui.name2.setPlainText(self.window.p[panel + 1].panel[e][6])
                     self.window.ui.name3.setPlainText(self.window.p[panel + 1].panel[e][7])
-                    break
-                else:
-                    self.window.ui.name1.setPlainText(self.lbl_nameUp[e].text())
-                    self.window.ui.name2.setPlainText(self.lbl_nameMiddle[e].text())
-                    self.window.ui.name3.setPlainText(self.lbl_nameDown[e].text())
-                    break
+                    self.window.ui.name1_2.setPlainText(self.window.p[panel + 1].panel[e][19])
+                    self.window.ui.name2_2.setPlainText(self.window.p[panel + 1].panel[e][20])
+                    self.window.ui.name3_2.setPlainText(self.window.p[panel + 1].panel[e][21])
+                    self.window.ui.cbColor.setCurrentIndex(int(self.window.p[panel + 1].panel[e][3]))
+                    self.window.ui.cbInterlock.setCurrentIndex(int(self.window.p[panel + 1].panel[e][9]))
+                    self.window.ui.cbSecurity.setCurrentIndex(int(self.window.p[panel + 1].panel[e][8]))
+                    self.window.ui.cbSetup.setCurrentIndex(int(self.window.p[panel + 1].panel[e][1]))
+                    self.window.ui.cbTextColor.setCurrentIndex(int(self.window.p[panel + 1].panel[e][4]))
+                    self.window.ui.cbType.setCurrentIndex(int(self.window.p[panel + 1].panel[e][2]))
 
     def typeEvent1A(self, event):
         self.window.ui.cbARrange.setCurrentIndex(1)
