@@ -51,6 +51,18 @@ class MainWindow(QtWidgets.QMainWindow):
         #call Panel instance
         self.iFpanel[self.__currentTab].changeName3(self.__currentTab)
 
+    def changeInput(self):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeInput(self.__currentTab)
+
+    def changeOutput1(self):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeOutput1(self.__currentTab)
+
+    def changeOutput2(self):
+        #call Panel instance
+        self.iFpanel[self.__currentTab].changeOutput2(self.__currentTab)
+
     def currentRange(self, event):
         #disconect while setting up cBoxes
         self.ui.name1.textChanged.connect(self.changeName1)
@@ -74,6 +86,28 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbTextColor.currentIndexChanged.disconnect()
         self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
         self.ui.cbType.currentIndexChanged.disconnect()
+
+        self.ui.cbInput.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.txtInputNumber.textChanged.connect(self.changeInput)
+        self.ui.cbContactIn.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbOutput.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.txtOutputNumber.textChanged.connect(self.changeOutput1)
+        self.ui.cbContactOut.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbOutput_2.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.txtOutputNumber_2.textChanged.connect(self.changeOutput2)
+        self.ui.cbContactOut_2.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbInput.currentIndexChanged.disconnect()
+        self.ui.txtInputNumber.textChanged.disconnect()
+        self.ui.cbContactIn.currentIndexChanged.disconnect()
+        self.ui.cbOutput.currentIndexChanged.disconnect()
+        self.ui.txtOutputNumber.textChanged.disconnect()
+        self.ui.cbContactOut.currentIndexChanged.disconnect()
+        self.ui.cbOutput_2.currentIndexChanged.disconnect()
+        self.ui.txtOutputNumber_2.textChanged.disconnect()
+        self.ui.cbContactOut_2.currentIndexChanged.disconnect()
 
         #update all
         for e in PanelDiscripition.elements:
@@ -104,6 +138,18 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.cbSetup.currentIndexChanged.connect(self.changeCBoxes)
         self.ui.cbTextColor.currentIndexChanged.connect(self.changeCBoxes)
         self.ui.cbType.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbInput.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.txtInputNumber.textChanged.connect(self.changeInput)
+        self.ui.cbContactIn.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbOutput.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.txtOutputNumber.textChanged.connect(self.changeOutput1)
+        self.ui.cbContactOut.currentIndexChanged.connect(self.changeCBoxes)
+
+        self.ui.cbOutput_2.currentIndexChanged.connect(self.changeCBoxes)
+        self.ui.txtOutputNumber_2.textChanged.connect(self.changeOutput2)
+        self.ui.cbContactOut_2.currentIndexChanged.connect(self.changeCBoxes)
 
     def changeCBoxes(self, event):
         #call Panel instance

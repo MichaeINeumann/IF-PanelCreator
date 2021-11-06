@@ -254,18 +254,42 @@ class Panel:
                     self.lbl_nameDown[e].setText(self.window.p[panel+1].panel[e][21])
                     break
 
+    def changeInput(self, panel):
+        # write data from UI in PanelFile - Update lbl
+        for e in self.elements:
+            if self.window.ui.cbARrange.currentText() == e:
+                self.window.p[panel + 1].panel[e][11] = self.window.ui.txtInputNumber.toPlainText() #2do chk number
+
+    def changeOutput1(self, panel):
+        # write data from UI in PanelFile - Update lbl
+        for e in self.elements:
+            if self.window.ui.cbARrange.currentText() == e:
+                self.window.p[panel + 1].panel[e][14] = self.window.ui.txtOutputNumber.toPlainText() #2do chk number
+
+    def changeOutput2(self, panel):
+        # write data from UI in PanelFile - Update lbl
+        for e in self.elements:
+            if self.window.ui.cbARrange.currentText() == e:
+                self.window.p[panel + 1].panel[e][17] = self.window.ui.txtOutputNumber_2.toPlainText() #2do chk number
+
     def changeCBoxes(self, panel):
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e: #Data cames when event.select cbARrange, default select is not in the element list
-                #2do inputs
-                #break
                 self.window.p[panel + 1].panel[e][3] = self.window.ui.cbColor.currentIndex()
                 self.window.p[panel + 1].panel[e][9] = self.window.ui.cbInterlock.currentIndex()
                 self.window.p[panel + 1].panel[e][8] = self.window.ui.cbSecurity.currentIndex()
                 self.window.p[panel + 1].panel[e][1] = self.window.ui.cbSetup.currentIndex()
                 self.window.p[panel + 1].panel[e][4] = self.window.ui.cbTextColor.currentIndex()
                 self.window.p[panel + 1].panel[e][2] = self.window.ui.cbType.currentIndex()
+
+                self.window.p[panel + 1].panel[e][10] = self.window.ui.cbInput.currentIndex()
+                self.window.p[panel + 1].panel[e][12] = self.window.ui.cbContactIn.currentIndex()
+                self.window.p[panel + 1].panel[e][13] = self.window.ui.cbOutput.currentIndex()
+                self.window.p[panel + 1].panel[e][15] = self.window.ui.cbContactOut.currentIndex()
+                self.window.p[panel + 1].panel[e][16] = self.window.ui.cbOutput_2.currentIndex()
+                self.window.p[panel + 1].panel[e][18] = self.window.ui.cbContactOut_2.currentIndex()
+
                 #update Panel - only 3 relevance options
                 self.setPixmap(PanelDiscripition.panelType[str(self.window.p[panel + 1].panel[e][2])], e)
                 self.setColour(PanelDiscripition.PanelColor[str(self.window.p[panel + 1].panel[e][3])], e)
@@ -288,6 +312,16 @@ class Panel:
                     self.window.ui.cbSetup.setCurrentIndex(int(self.window.p[panel + 1].panel[e][1]))
                     self.window.ui.cbTextColor.setCurrentIndex(int(self.window.p[panel + 1].panel[e][4]))
                     self.window.ui.cbType.setCurrentIndex(int(self.window.p[panel + 1].panel[e][2]))
+
+                    self.window.ui.cbInput.setCurrentIndex(int(self.window.p[panel + 1].panel[e][10]))
+                    self.window.ui.txtInputNumber.setPlainText(self.window.p[panel + 1].panel[e][11])
+                    self.window.ui.cbContactIn.setCurrentIndex(int(self.window.p[panel + 1].panel[e][12]))
+                    self.window.ui.cbOutput.setCurrentIndex(int(self.window.p[panel + 1].panel[e][13]))
+                    self.window.ui.txtOutputNumber.setPlainText(self.window.p[panel + 1].panel[e][14])
+                    self.window.ui.cbContactOut.setCurrentIndex(int(self.window.p[panel + 1].panel[e][15]))
+                    self.window.ui.cbOutput_2.setCurrentIndex(int(self.window.p[panel + 1].panel[e][16]))
+                    self.window.ui.txtOutputNumber_2.setPlainText(self.window.p[panel + 1].panel[e][17])
+                    self.window.ui.cbContactOut_2.setCurrentIndex(int(self.window.p[panel + 1].panel[e][18]))
 
     def typeEvent1A(self, event):
         self.window.ui.cbARrange.setCurrentIndex(1)
