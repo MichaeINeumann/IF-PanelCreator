@@ -258,19 +258,25 @@ class Panel:
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.window.p[panel + 1].panel[e][11] = self.window.ui.txtInputNumber.toPlainText() #2do chk number
+                self.window.p[panel + 1].panel[e][11] = self.tryParseInt(self.window.ui.txtInputNumber.toPlainText(), 0)
+                self.setEnable(panel)
+                break
 
     def changeOutput1(self, panel):
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.window.p[panel + 1].panel[e][14] = self.window.ui.txtOutputNumber.toPlainText() #2do chk number
+                self.window.p[panel + 1].panel[e][14] = self.tryParseInt(self.window.ui.txtOutputNumber.toPlainText(), 0)
+                self.setEnable(panel)
+                break
 
     def changeOutput2(self, panel):
         # write data from UI in PanelFile - Update lbl
         for e in self.elements:
             if self.window.ui.cbARrange.currentText() == e:
-                self.window.p[panel + 1].panel[e][17] = self.window.ui.txtOutputNumber_2.toPlainText() #2do chk number
+                self.window.p[panel + 1].panel[e][17] = self.tryParseInt(self.window.ui.txtOutputNumber_2.toPlainText(), 0)
+                self.setEnable(panel)
+                break
 
     def changeCBoxes(self, panel):
         # write data from UI in PanelFile - Update lbl
@@ -294,6 +300,7 @@ class Panel:
                 self.setPixmap(PanelDiscripition.panelType[str(self.window.p[panel + 1].panel[e][2])], e)
                 self.setColour(PanelDiscripition.PanelColor[str(self.window.p[panel + 1].panel[e][3])], e)
                 self.setTextColour(PanelDiscripition.TextColor[str(self.window.p[panel + 1].panel[e][4])], e)
+                self.setEnable(panel)
                 break
 
     def currentRange(self, panel):
@@ -314,14 +321,27 @@ class Panel:
                     self.window.ui.cbType.setCurrentIndex(int(self.window.p[panel + 1].panel[e][2]))
 
                     self.window.ui.cbInput.setCurrentIndex(int(self.window.p[panel + 1].panel[e][10]))
-                    self.window.ui.txtInputNumber.setPlainText(self.window.p[panel + 1].panel[e][11])
+                    self.window.ui.txtInputNumber.setPlainText(str(self.window.p[panel + 1].panel[e][11]))
                     self.window.ui.cbContactIn.setCurrentIndex(int(self.window.p[panel + 1].panel[e][12]))
                     self.window.ui.cbOutput.setCurrentIndex(int(self.window.p[panel + 1].panel[e][13]))
-                    self.window.ui.txtOutputNumber.setPlainText(self.window.p[panel + 1].panel[e][14])
+                    self.window.ui.txtOutputNumber.setPlainText(str(self.window.p[panel + 1].panel[e][14]))
                     self.window.ui.cbContactOut.setCurrentIndex(int(self.window.p[panel + 1].panel[e][15]))
                     self.window.ui.cbOutput_2.setCurrentIndex(int(self.window.p[panel + 1].panel[e][16]))
-                    self.window.ui.txtOutputNumber_2.setPlainText(self.window.p[panel + 1].panel[e][17])
+                    self.window.ui.txtOutputNumber_2.setPlainText(str(self.window.p[panel + 1].panel[e][17]))
                     self.window.ui.cbContactOut_2.setCurrentIndex(int(self.window.p[panel + 1].panel[e][18]))
+                    self.setEnable(panel)
+                    break
+
+    def setEnable(self, panel):
+        for e in self.elements:
+            if self.window.ui.cbARrange.currentText() == e:
+                self.window.ui.cbOutput.setEnabled(self.enableOutput(int(self.window.p[panel + 1].panel[e][2]), self.tryParseInt(self.window.p[panel + 1].panel[e][11], 0)))
+                self.window.ui.cbOutput_2.setEnabled(self.enableOutput(int(self.window.p[panel + 1].panel[e][2]), self.tryParseInt(self.window.p[panel + 1].panel[e][11], 0)))
+                self.window.ui.cbContactOut.setEnabled(self.enableOutput(int(self.window.p[panel + 1].panel[e][2]), self.tryParseInt(self.window.p[panel + 1].panel[e][11], 0)))
+                self.window.ui.cbContactOut_2.setEnabled(self.enableOutput(int(self.window.p[panel + 1].panel[e][2]), self.tryParseInt(self.window.p[panel + 1].panel[e][11], 0)))
+                self.window.ui.txtOutputNumber.setEnabled(self.enableOutput(int(self.window.p[panel + 1].panel[e][2]), self.tryParseInt(self.window.p[panel + 1].panel[e][11], 0)))
+                self.window.ui.txtOutputNumber_2.setEnabled(self.enableOutput(int(self.window.p[panel + 1].panel[e][2]), self.tryParseInt(self.window.p[panel + 1].panel[e][11], 0)))
+                break
 
     def typeEvent1A(self, event):
         self.window.ui.cbARrange.setCurrentIndex(1)
@@ -418,3 +438,44 @@ class Panel:
 
     def typeEvent4H(self, event):
         self.window.ui.cbARrange.setCurrentIndex(32)
+
+    def tryParseInt(self, s, val=None):
+        try:
+            return int(s)
+        except ValueError:
+            return val
+
+    def chkRange(self, input: str, Range: tuple):
+        (min, max) = Range
+
+        input = self.tryParseInt(input, 0)
+
+        if input >= min and input <= max:
+            return True
+        else:
+            return False
+
+    def enableOutput(self, iconType, Range :int):
+        if (self.window.ui.cbInput.currentIndex() == 1) and (iconType < 13) :
+            if self.chkRange(Range, (10, 12567)):  # 10010 to #12567 (2048 signals) enable
+                return True
+            elif self.chkRange(Range, (30010, 32567)):  # 30010 to #32567 (2048 signals) enable
+                return True
+            elif self.chkRange(Range, (60010, 60647)):  # 60010 to #60647 (512 signals) enable
+                return True
+            elif self.chkRange(Range, (35010, 37567)):  # 35010 to #37567 (2048 signals) enable
+                return True
+            else:
+                # 00010 to #02567 (2048 signals) disable
+                # 20010 to #22567 (2048 signals) disable
+                # 40010 to #41607 (1280 signals) disable
+                # 50010 to #52007 (1600 signals) disable
+                # 70010 to #79997 (7992 signals) disable
+                # 80010 to #80647 (512 signals) disable
+                # 82010 to #82207 (160 signals) disable
+                # 25010 to #27567 (2048 signals) disable
+                return False
+        elif iconType == 16 or iconType == 17:
+            return self.chkRange(Range, (0, 1000))
+        else:
+            return False
