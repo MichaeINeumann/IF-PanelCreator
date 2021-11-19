@@ -1,3 +1,18 @@
+#main.py - Main entry point
+#Copyright (C) 2021  Michael Neumann <michael-n@gmx.net>
+
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#any later version.
+
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import sys
 from panel import *
 from readPanel import *
@@ -5,7 +20,6 @@ from qtpy import QtWidgets, QtGui, QtCore
 from ui.mainwindow import Ui_MainWindow
 
 app = QtWidgets.QApplication(sys.argv)
-
 
 class MainWindow(QtWidgets.QMainWindow):
     __currentTab = 0
@@ -193,7 +207,6 @@ class MainWindow(QtWidgets.QMainWindow):
                         self.iFpanel[i].setTextColour(PanelDiscripition.TextColor[self.p[i + 1].panel[e][4]], e)
 
 
-            #print(self.p[1].panel["NAME"][0])
             self.ui.tabWidget.setTabText(0, self.p[1].panel["NAME"][1])
             self.ui.tabWidget.setTabText(1, self.p[2].panel["NAME"][1])
             self.ui.tabWidget.setTabText(2, self.p[3].panel["NAME"][1])
@@ -230,14 +243,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.actionSave.triggered.connect(self.savefile)
         self.ui.actionSave_as.triggered.connect(self.savefile_as)
 
-        # self.ui.btn1.clicked.connect(self.on_button_click)
-        # self.ui.btnSave.clicked.connect(self.on_button_clickSave)
-
-
-
-
 
 window = MainWindow()
+
+
 iFpanel = Panel(window.ui.tab_1, window)
 iFpanel1 = Panel(window.ui.tab_2, window)
 iFpanel2 = Panel(window.ui.tab_3, window)
@@ -249,38 +258,7 @@ iFpanel7 = Panel(window.ui.tab_8, window)
 iFpanel8 = Panel(window.ui.tab_9, window)
 iFpanel9 = Panel(window.ui.tab_10, window)
 
-# window.iFpanel.append(iFpanel) #add Oject for Connecting, window to current Panel
-# window.iFpanel.append(iFpanel1) #add Oject for Connecting, window to current Panel
-
-# test1 = testClass(window.ui.tab)
-# test2 = testClass(window.ui.tab_2)
-
-# test1.setText("tabulator 1")
-# test2.setText("tabulator 2")
-
-#iFpanel.setText("Tab1", "Tab1", "Tab1", "1A")
-#iFpanel1.setText("Tab2", "Tab2", "Tab22", "1A")
-
-# iFpanel.setText(p[1].panel["1A"][5], p[1].panel["1A"][6], p[1].panel["1A"][7], "1A")
-
-# iFpanel.lbl_name1Aup.setText("Hallo")
-
-# iFpanel.setTextUp("Hallo Michael", 1)
-
-# window.ui.lbl_type1A.setPixmap(QtGui.QPixmap("UI/untitled/pic/Circle.png"))
-# window.ui.lbl_type1A.setStyleSheet("QLabel { background-color : red;}")
-
-
-# Panelx ausgeben
-# for element in elements:
-#    print(p[1].panel[element])
-
-
-
-# print(p[10].panel["IFPANEL"])
-#print(p[1].panel["2B"][5])
-#print(p[1].panel["2B"][6])
-#print(p[1].panel["2B"][7])
+app.aboutQt( )
 
 
 window.show()
