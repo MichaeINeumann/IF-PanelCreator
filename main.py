@@ -128,7 +128,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         #update all
         for e in PanelDiscripition.elements:
-            for i in range(9):
+            for i in range(14):
                 if self.p[i + 1].panel[e][1] == "1":  # VALID DATA
                     if (self.ui.cbLanguage.currentText() == "first Language"):
                         self.iFpanel[i].setText(self.p[i + 1].panel[e][5], self.p[i + 1].panel[e][6],self.p[i + 1].panel[e][7], e)
@@ -175,10 +175,6 @@ class MainWindow(QtWidgets.QMainWindow):
     def changeGroupName(self):
         self.ui.tabWidget.setTabText(self.__currentTab, self.ui.groupName.toPlainText())
 
-    def on_button_click(self):
-        print("test")
-        sys.exit(app.exec())
-
     def on_button_clickSave(self):
         print(self.ui.input.text())
         window.ui.lbl1.setStyleSheet("QLabel { background-color : blue;}")
@@ -202,7 +198,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.p = readFile(self.fname)
             # self.iFpanel[0].setText(self.p[1].panel["1A"][5], self.p[1].panel["1A"][6], self.p[1].panel["1A"][7], "1A")
             for e in PanelDiscripition.elements:
-                for i in range(9):
+                for i in range(14):
                     if self.p[i+1].panel[e][1] == "1": #VALID DATA
                         self.iFpanel[i].setText(self.p[i+1].panel[e][5], self.p[i+1].panel[e][6], self.p[i+1].panel[e][7], e)
                         self.iFpanel[i].setPixmap(PanelDiscripition.panelType[self.p[i+1].panel[e][2]], e)
@@ -220,6 +216,11 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.tabWidget.setTabText(7, self.p[8].panel["NAME"][1])
             self.ui.tabWidget.setTabText(8, self.p[9].panel["NAME"][1])
             self.ui.tabWidget.setTabText(9, self.p[10].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(10, self.p[11].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(11, self.p[12].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(12, self.p[13].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(13, self.p[14].panel["NAME"][1])
+            self.ui.tabWidget.setTabText(14, self.p[15].panel["NAME"][1])
 
     def savefile(self):
         writeFile(self.fname, self.p)
@@ -260,6 +261,11 @@ iFpanel6 = Panel(window.ui.tab_7, window)
 iFpanel7 = Panel(window.ui.tab_8, window)
 iFpanel8 = Panel(window.ui.tab_9, window)
 iFpanel9 = Panel(window.ui.tab_10, window)
+iFpanel10 = Panel(window.ui.tab_11, window)
+iFpanel11 = Panel(window.ui.tab_12, window)
+iFpanel12 = Panel(window.ui.tab_13, window)
+iFpanel13 = Panel(window.ui.tab_14, window)
+iFpanel14 = Panel(window.ui.tab_15, window)
 
 app.aboutQt( )
 

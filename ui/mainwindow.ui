@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1637</width>
-    <height>504</height>
+    <width>1665</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -30,25 +30,12 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btn1">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>580</y>
-      <width>80</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ENDE</string>
-    </property>
-   </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>810</width>
+      <width>941</width>
       <height>425</height>
      </rect>
     </property>
@@ -60,12 +47,12 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>805</width>
+      <width>1020</width>
       <height>425</height>
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -117,11 +104,36 @@
       <string>Panel 10</string>
      </attribute>
     </widget>
+    <widget class="QWidget" name="tab_11">
+     <attribute name="title">
+      <string>Panel 11</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_12">
+     <attribute name="title">
+      <string>Panel 12</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_13">
+     <attribute name="title">
+      <string>Panel 13</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_14">
+     <attribute name="title">
+      <string>Panel 14</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_15">
+     <attribute name="title">
+      <string>Panel 15</string>
+     </attribute>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>840</x>
+      <x>950</x>
       <y>0</y>
       <width>101</width>
       <height>31</height>
@@ -134,7 +146,7 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>840</x>
+      <x>950</x>
       <y>30</y>
       <width>701</width>
       <height>391</height>
@@ -994,7 +1006,7 @@ mode</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1637</width>
+     <width>1665</width>
      <height>20</height>
     </rect>
    </property>
