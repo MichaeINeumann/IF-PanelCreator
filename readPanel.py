@@ -15,6 +15,7 @@
 #along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import csv
+import chardet
 
 
 class PanelDiscripition:
@@ -205,6 +206,8 @@ class PanelDiscripition:
         "Register (M000 to M999: numbers are 3-digit)": "4"
     }
 
+    encoding = {'encoding': 'windows-1252', 'confidence': 0.5}
+
     def __init__(self):
         self.panel = {
             "IFPANEL": "0",
@@ -248,7 +251,11 @@ def readFile(path):
     i = int(0)
     p = {}  # dictionary of Panels
 
-    with open(path, 'r', encoding='utf-8-sig') as csvfile:
+    rawdata = open(path, 'rb').read()
+    PanelDiscripition.encoding = chardet.detect(rawdata)
+    #print(PanelDiscripition.encoding)
+
+    with open(path, 'r', encoding=PanelDiscripition.encoding['encoding']) as csvfile:
         panelreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         for row in panelreader:
 
@@ -269,9 +276,9 @@ def readFile(path):
 def writeFile(path, p):
     i = int(0)
     #print(p[1].panel["1A"])
+    #print(PanelDiscripition.encoding)
 
-
-    with open(path, 'w', encoding='utf-8-sig', newline='') as csvfile:
+    with open(path, 'w', encoding=PanelDiscripition.encoding['encoding'], newline='') as csvfile:
         panelwriter = csv.writer(csvfile, delimiter=',', quotechar='"')
         for i in range(15):
             for e in PanelDiscripition.elementsForWrite:
