@@ -42,10 +42,13 @@ class MainWindow(QtWidgets.QMainWindow):
         tabTxt = self.ui.tabWidget.tabText(tab)
         self.ui.groupName.setPlainText(tabTxt)
 
+        self.ui.cbARrange.setCurrentIndex(0)
+
         # RECONNECT WHEN TAB CHANGED
         self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
         self.ui.cbLanguage.currentIndexChanged.connect(self.currentRange)
         self.ui.cbARrange.currentTextChanged.disconnect()  # this disconnect all
+        self.ui.cbLanguage.currentIndexChanged.disconnect()  # this disconnect all
         self.ui.cbARrange.currentTextChanged.connect(self.currentRange)
         self.ui.cbLanguage.currentIndexChanged.connect(self.currentRange)
 
