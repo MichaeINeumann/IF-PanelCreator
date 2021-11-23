@@ -204,7 +204,9 @@ class MainWindow(QtWidgets.QMainWindow):
                         self.iFpanel[i].setPixmap(PanelDiscripition.panelType[self.p[i+1].panel[e][2]], e)
                         self.iFpanel[i].setColour(PanelDiscripition.PanelColor[self.p[i+1].panel[e][3]], e)
                         self.iFpanel[i].setTextColour(PanelDiscripition.TextColor[self.p[i + 1].panel[e][4]], e)
-
+                    else:
+                        self.iFpanel[i].setPixmap("UI/pic/Empty.png", e)
+                        self.iFpanel[i].setText(" ", " ", " ", e)
 
             self.ui.tabWidget.setTabText(0, self.p[1].panel["NAME"][1])
             self.ui.tabWidget.setTabText(1, self.p[2].panel["NAME"][1])
