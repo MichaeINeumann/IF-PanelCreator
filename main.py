@@ -185,7 +185,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def getfile(self):
         eeg_cap_dir = QtCore.QDir.currentPath()
         dialog = QtWidgets.QFileDialog(self)
-        dialog.setWindowTitle('Open EEG Position file')
+        dialog.setWindowTitle('Open IFPANEL.DAT file')
         dialog.setNameFilter('(*.*)')
         dialog.setDirectory(eeg_cap_dir)
         dialog.setFileMode(QtWidgets.QFileDialog.ExistingFile)
