@@ -229,15 +229,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def savefile_as(self):
         eeg_cap_dir = QtCore.QDir.currentPath()
-        dialog = QtWidgets.QFileDialog(self)
-        dialog.setWindowTitle('Open EEG Position file')
-        dialog.setNameFilter('(*.DAT)')
-        dialog.setDirectory(eeg_cap_dir)
-        dialog.setFileMode(QtWidgets.QFileDialog.AnyFile)
-        filename = None
-        if dialog.exec_() == QtWidgets.QDialog.Accepted:
-            filename = dialog.selectedFiles()
-        if filename:
+        filename = QtWidgets.QFileDialog.getSaveFileName(self)
+
+        if filename[0] != "":
             self.fname = str(filename[0])
             writeFile(self.fname, self.p)
 
